@@ -55,33 +55,43 @@ def get_operator_choice():
 
 
 if __name__ == "__main__":
-    n1, n2 = get_user_input()
 
-    if n1 is not None and n2 is not None:
+    while True:
+        n1, n2 = get_user_input()
 
-        my_calculator = Calculator(n1, n2)
-        choice = get_operator_choice()
+        if n1 is not None and n2 is not None:
 
-        result = None
-        operation = ""
+            my_calculator = Calculator(n1, n2)
+            choice = get_operator_choice()
 
-        if choice in ("1", "add", "+"):
-            result = my_calculator.add()
-            operation = "+"
-        elif choice in ("2", "minus", "-"):
-            result = my_calculator.subtract()
-            operation = "-"
-        elif choice in ("3", "multiply", "*"):
-            result = my_calculator.multiply()
-            operation = "*"
-        elif choice in ("4", "divide", "/"):
-            result = my_calculator.division()
-            operation = "/"
-        else:
-            print("\n Invalid choice. Please select a number or symbol from the list.")
+            result = None
+            operation = ""
 
-        if result is not None and operation:
-            print("--- Final Result ---")
-            print(f"{n1} {operation} {n2} = {result}")
+            if choice in ("1", "add", "+"):
+                result = my_calculator.add()
+                operation = "+"
+            elif choice in ("2", "minus", "-"):
+                result = my_calculator.subtract()
+                operation = "-"
+            elif choice in ("3", "multiply", "*"):
+                result = my_calculator.multiply()
+                operation = "*"
+            elif choice in ("4", "divide", "/"):
+                result = my_calculator.division()
+                operation = "/"
+            else:
+                print(
+                    "\n Invalid choice. Please select a number or symbol from the list."
+                )
 
-    print("Calculation Done")
+            if result is not None and operation:
+                print("--- Final Result ---")
+                print(f"{n1} {operation} {n2} = {result}")
+
+            exit = input("exit calculator(Y/N): ").strip().lower()
+            if exit == "y":
+                print("calculator closed")
+                break
+            else:
+                print("continuing..")
+                continue
